@@ -6,7 +6,9 @@
 
 <a href="https://www.figma.com/file/MHUESDNNKB1b8hxnpSHgnO/%E3%83%AF%E3%82%A4%E3%83%A4%E3%83%BC%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0?type=design&t=dsxdGjmPUi7EEkix-1">ワイヤーフレーム</a>
 
-## テーブル定義
+<details>
+  <summary>テーブル定義</summary>
+  
 Users テーブル（ユーザー情報）
 |カラム名	| データ型	| NULL	| キー	| 初期値	| AUTO INCREMENT|
 |---|---|---|---|---|---|
@@ -59,6 +61,9 @@ RecipeIngredients テーブル（レシピごとの材料とその量）
 |updated_at	|DATETIME	|NOT NULL	|	|	||
 - 外部キー制約：recipe_id は Recipes テーブルの id に紐づく
 - 外部キー制約：ingredient_id は Ingredients テーブルの id に紐づく
+</details>
 
-## システム構成図
+<details>
+  <summary>システム構成図</summary>
 <img src="./img/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E6%88%90%E5%9B%B3.png" width="500px">
+</details>
