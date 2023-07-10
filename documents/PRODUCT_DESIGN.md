@@ -59,3 +59,6 @@ RecipeIngredients テーブル（レシピごとの材料とその量）
 |updated_at	|DATETIME	|NOT NULL	|	|	||
 - 外部キー制約：recipe_id は Recipes テーブルの id に紐づく
 - 外部キー制約：ingredient_id は Ingredients テーブルの id に紐づく
+
+## システム構成図
+<img src="./img/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E6%88%90%E5%9B%B3.png" width="500px">
