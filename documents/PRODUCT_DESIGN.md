@@ -8,8 +8,8 @@
 
 <details>
   <summary>テーブル定義</summary>
-  
-Users テーブル（ユーザー情報）
+
+Users テーブル（ユーザー）
 |カラム名	| データ型	| NULL	| キー	| 初期値	| AUTO INCREMENT|
 |---|---|---|---|---|---|
 |id	|INT	|NOT NULL	|PRIMARY KEY	|	|YES|
@@ -18,7 +18,7 @@ Users テーブル（ユーザー情報）
 |created_at	|DATETIME	|NOT NULL	|	|	||
 |updated_at	|DATETIME	|NOT NULL	|	|	||
 
-Ingredients テーブル（材料情報）
+Ingredients テーブル（材料）
 |カラム名	| データ型	| NULL	| キー	| 初期値	| AUTO INCREMENT|
 |---|---|---|---|---|---|
 |id	|INT	|NOT NULL	|PRIMARY KEY	|	|YES|
@@ -29,23 +29,23 @@ Ingredients テーブル（材料情報）
 |updated_at	|DATETIME	|NOT NULL	|	|	||
 - 外部キー制約：user_id は Users テーブルの id に紐づく
 
-Recipes テーブル（レシピ情報）
+Recipes テーブル（レシピ）
 |カラム名	| データ型	| NULL	| キー	| 初期値	| AUTO INCREMENT|
 |---|---|---|---|---|---|
 |id	|INT	|NOT NULL	|PRIMARY KEY	|	|YES|
 |user_id	|INT	|NOT NULL	|FOREIGN KEY	|	||
 |title	|VARCHAR(255)	|NOT NULL	|	|	||
+|notes	|TEXT	|	|	|	||
 |created_at	|DATETIME	|NOT NULL	|	|	||
 |updated_at	|DATETIME	|NOT NULL	|	|	||
 - 外部キー制約：user_id は Users テーブルの id に紐づく
 
-RecipeDetails テーブル（レシピの詳細情報）
+RecipeMethod テーブル（レシピの作り方）
 |カラム名	| データ型	| NULL	| キー	| 初期値	| AUTO INCREMENT|
 |---|---|---|---|---|---|
 |id	|INT	|NOT NULL	|PRIMARY KEY	|	|YES|
 |recipe_id	|INT	|NOT NULL	|FOREIGN KEY	|	||
 |method	|TEXT	|	|	|	||
-|notes	|TEXT	|	|	|	||
 |created_at	|DATETIME	|NOT NULL	|	|	||
 |updated_at	|DATETIME	|NOT NULL	|	|	||
 - 外部キー制約：recipe_id は Recipes テーブルの id に紐づく
