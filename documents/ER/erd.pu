@@ -1,0 +1,9 @@
+ @startuml erd
+ !include tables.pu
+
+Users ||-d-o{ Ingredients
+Users ||-u-o{ Recipes
+Recipes ||-l-o{ RecipeIngredients
+Recipes ||-r-o{ RecipeMethod
+Ingredients ||-d-o{ RecipeIngredients
+ @enduml

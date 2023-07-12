@@ -1,0 +1,50 @@
+@startuml tables
+entity Users as "Users\nユーザー" {
+  + id [PK]
+  --
+  username [ユーザー名]
+  password [パスワード]
+  created_at [作成日]
+  updated_at [更新日]
+}
+
+entity Ingredients as "Ingredients\n材料" {
+  + id [PK]
+  --
+  user_id <<FK>>
+  name [材料名]
+  cost_per_gram [グラム当たり原価]
+  created_at [作成日]
+  updated_at [更新日]
+}
+
+entity Recipes as "Recipes\nレシピ" {
+  + id [PK]
+  --
+  user_id <<FK>>
+  title [タイトル]
+  notes [メモ]
+  created_at [作成日]
+  updated_at [更新日]
+}
+
+entity RecipeMethod as "RecipeMethod\nレシピ手順" {
+  + id [PK]
+  --
+  recipe_id <<FK>>
+  method [手順]
+  created_at [作成日]
+  updated_at [更新日]
+}
+
+entity RecipeIngredients as "RecipeIngredients\nレシピ材料" {
+  + id [PK]
+  --
+  recipe_id <<FK>>
+  ingredient_id <<FK>>
+  quantity_in_grams [グラム数]
+  created_at [作成日]
+  updated_at [更新日]
+}
+
+@enduml
