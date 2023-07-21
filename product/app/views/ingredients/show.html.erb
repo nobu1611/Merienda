@@ -1,0 +1,14 @@
+<h1>Ingredient: <%= @ingredient.name %></h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ingredient.name %>
+</p>
+
+<p>
+  <strong>Cost per gram:</strong>
+  <%= @ingredient.cost_per_gram %>
+</p>
+
+<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
+<%= link_to 'Back', ingredients_path %>

@@ -1,0 +1,27 @@
+<h1>材料リスト</h1>
+
+<div id="ingredient_form">
+  <%= form_with(model: @ingredient, url:ingredients_path, remote: true) do |form| %>
+    <div class="field">
+      <%= form.label :'材料名' %>
+      <%= form.text_field :name %>
+    </div>
+    <div class="field">
+      <%= form.label :'㌘あたり原価' %>
+      <%= form.number_field :cost_per_gram, step: 0.01 %>
+      <span>円</span>
+    </div>
+    <%= form.submit '追加' %>
+  <% end %>
+</div>
+
+<div id="ingredient_list">
+  <!-- ここに材料リストを表示 -->
+  <% @ingredients.each do |ingredient| %>
+    <div>
+      <%= ingredient.name %> : <%= ingredient.cost_per_gram %>円
+      <%= link_to ingredient_path(ingredient.id), data: { turbo_method: :delete }, remote: true do %>
+      削除<% end %>
+    </div>
+  <% end %>
+</div>
