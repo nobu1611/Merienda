@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_many :ingredients
-  has_many :recipes
-
-  validates :username, presence: true, uniqueness: true
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :name, presence: true, length: { minimum: 2 }
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 end
