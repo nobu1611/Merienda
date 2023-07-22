@@ -15,7 +15,8 @@ class IngredientsController < ApplicationController
 
   def create
     @ingredient = Ingredient.new(ingredient_params)
-    @ingredient.user_id = 1
+    # @ingredient.user_id = 1
+    @ingredient.user = current_user
 
     # respond_to do |format|
       if @ingredient.save
@@ -24,6 +25,8 @@ class IngredientsController < ApplicationController
         # format.js   # this will render 'create.js.erb'
         # format.json { render :show, status: :created, location: @ingredient }
       else
+        # Rails.logger.error @ingredient.errors.full_messages.join(', ')
+        redirect_to ingredients_path, alert: @ingredient.errors.full_messages.join(', ')
         # format.html { render :new }
         # format.json { render json: @ingredient.errors, status: :unprocessable_entity }
       end
