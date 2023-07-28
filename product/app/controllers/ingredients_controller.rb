@@ -1,5 +1,6 @@
 class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @ingredient = Ingredient.new
@@ -38,9 +39,9 @@ class IngredientsController < ApplicationController
 
   def update
     if @ingredient.update(ingredient_params)
-      render :show, status: :ok, location: @ingredient
+      # render :show, status: :ok, location: @ingredient
     else
-      render :edit
+      # render :edit
     end
   end
 
