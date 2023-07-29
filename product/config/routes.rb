@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :users, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   resources :ingredients, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  resources :recipes, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 
 end

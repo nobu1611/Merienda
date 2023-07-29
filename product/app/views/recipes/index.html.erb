@@ -1,2 +1,16 @@
+<!-- app/views/recipes/index.html.erb -->
 <h1>レシピ一覧</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
+
+<%= link_to '新しいレシピを作成', new_recipe_path %>
+
+<table>
+  <% @recipes.each do |recipe| %>
+    <tr>
+      <td><%= link_to recipe.title, recipe %></td>
+      <td>
+        <%= link_to '編集', edit_recipe_path(recipe) %>
+        <%= link_to '削除', recipe, data: { turbo_method: :delete, turbo_confirm: "削除してよろしいですか？" } %>
+      </td>
+    </tr>
+  <% end %>
+</table>

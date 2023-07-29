@@ -20,7 +20,7 @@
   <% @ingredients.each do |ingredient| %>
     <div>
       <%= ingredient.name %> : <%= ingredient.cost_per_gram %>円
-      <%= link_to ingredient_path(ingredient.id), data: { turbo_method: :delete }, remote: true do %>
+      <%= link_to ingredient_path(ingredient.id), data: { turbo_method: :delete, turbo_confirm: "削除してよろしいですか？" }, remote: true do %>
       削除<% end %>
     </div>
   <% end %>
