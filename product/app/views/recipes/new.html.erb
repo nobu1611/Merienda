@@ -1,9 +1,7 @@
-<!-- app/views/recipes/new.html.erb -->
-
 <div class="container mt-5">
   <h1 class="mb-4">新しいレシピを作成</h1>
 
-  <%= form_with model: @recipe, local: true, html: { class: 'needs-validation', novalidate: '' } do |form| %>
+  <%= form_with model: @recipe, url: recipes_path, local: true, html: { class: 'needs-validation', novalidate: '' } do |form| %>
     <div class="form-group">
       <%= form.label :レシピ名, class: 'form-label' %>
       <%= form.text_field :title, class: 'form-control', required: '' %>
@@ -14,86 +12,11 @@
       <%= form.text_area :notes, class: 'form-control', rows: '5', required: '' %>
     </div>
 
-  <%# 材料と分量を複数追加 %>
-    <div class="form-group">
-      <%= form.label :recipe_ingredients, '材料', class: 'form-label' %>
-      <%= form.fields_for :recipe_ingredients do |ingredient_fields| %>
-        <%= ingredient_fields.collection_select :ingredient_id, Ingredient.all, :id, :name, {include_blank: true}, class: 'form-control' %>
-        <%= ingredient_fields.label :quantity_in_grams, '分量', class: 'form-label' %>
-        <%= ingredient_fields.number_field :quantity_in_grams, class: 'form-control' %>
-      <% end %>
-
-      <!-- モーダルを開くボタン -->
-      <%# <button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#ingredientModal">
-        材料を追加
-      </button> %>
-      <%# <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ingredientModal" data-turbo-frame="new-ingredient">
-  材料を追加
-</button> %>
-
-
-      <!-- モーダル本体 -->
-      <div class="modal fade" id="ingredientModal" tabindex="-1" role="dialog" aria-labelledby="ingredientModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="ingredientModalLabel">材料と分量を追加</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <%= form.fields_for :recipe_ingredients, RecipeIngredient.new do |ingredient_fields| %>
-                <%= ingredient_fields.collection_select :ingredient_id, Ingredient.all, :id, :name, {include_blank: true}, class: 'form-control' %>
-                <%= ingredient_fields.label :quantity_in_grams, '分量', class: 'form-label' %>
-                <%= ingredient_fields.number_field :quantity_in_grams, class: 'form-control' %>
-              <% end %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-              <button type="button" class="btn btn-primary" id="add-ingredient-button">追加する</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <h2 class="mt-4 mb-2">作り方</h2>
-    <% @recipe.recipe_methods.each do |recipe_method| %>
-      <div class="form-group">
-        <%= form.fields_for :recipe_methods, recipe_method do |method_fields| %>
-          <%= method_fields.label :method, '作り方', class: 'form-label' %>
-          <%= method_fields.text_area :method, class: 'form-control', rows: '5', required: '' %>
-        <% end %>
-      </div>
-    <% end %>
-
     <div class="actions mt-3">
       <%= form.submit 'レシピを作成', class: 'btn btn-success btn-lg btn-block' %>
     </div>
   <% end %>
 </div>
-<div id="ingredient_list"></div>
-<div id="ingredien_quality"></div>
-
-<button id='add_ingredients'>材料を追加</button>
-<script>
-  var submitIngredient = document.getElementById('submit_ingredient');
-  var ingredientList = document.getElementById('ingredient_list');
-
-  var ingredientQuality = document.getElementById('ingredient_quality');
-  var ingredientForm = document.getElementById('ingredient_form');
-  var mask = document.getElementById("mask");
-  submitIngredient.addEventListener('click', function() {
-    var selectedColor = document.getElementById('selected_color');
-    var spinner = document.getElementById('spinner');
-    ingredientList.insertAdjacentHTML('beforeend', selectedColor.innerText + ' ' + spinner.value);
-    // ingredientList.innerHTML = selectedColor.innerText + ' ' + spinner.value;
-    // ingredientList.innerText = selectedColor.innerText;
-    // ingredientQuality.innerHTML = spinner.value;
-    mask.style.display = 'none';
-    ingredientForm.style.display = 'none';
-  });
-</script>
-<div id="ingredient_quality"></div>
+<%= link_to :back do %>
+  <button>戻る</button>
+<% end %>

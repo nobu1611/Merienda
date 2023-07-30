@@ -15,26 +15,32 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.user = current_user
+    @recipe.user_id = current_user.id
 
     if @recipe.save
-      respond_to do |format|
-        format.html { redirect_to recipe_path(@recipe) }
-        format.turbo_stream
-      end
+      redirect_to recipe_path(@recipe.id)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def show
-    @recipe_ingredients = @recipe.recipe_ingredients
+    @recipe_ingredient = RecipeIngredient.new
+    @user = current_user
+    @ingredients = @user.ingredients
+    # @recipe_ingredients = @recipe.recipe_ingredients.includes(:ingredient) # このレシピに関連する材料と分量だけを取得
+    # @recipe_ingredients = @ingredients.left_joins(:recipe_ingredients)
+    @recipe_ingredients = RecipeIngredient.where(recipe_id: @recipe.id).includes(:ingredient)
+    # @recipe_ingredients = @recipe.joins(:recipe_ingredients)
+    # @recipe_ingredients = @recipe.recipe_ingredients.joins(:recipe)
     @recipe_methods = @recipe.recipe_methods
   end
 
   def edit
-    @recipe.recipe_ingredients.build
-    @recipe.recipe_methods.build
+    @user = current_user
+     @ingredients = @user.ingredients
+    @recipe_ingredients = RecipeIngredient.where(recipe_id: @recipe.id).includes(:ingredient)
+    @recipe_methods = @recipe.recipe_methods
   end
 
   def update
@@ -56,7 +62,11 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  # def recipe_params
+  #   params.require(:recipe).permit(:title, :notes)
+  # end
   def recipe_params
-    params.require(:recipe).permit(:title, :notes, :user_id)
+  params.require(:recipe).permit(:title, :notes, recipe_ingredients_attributes: [:id, :ingredient_id, :quantity_in_grams], recipe_methods_attributes: [:id, :process])
   end
+
 end

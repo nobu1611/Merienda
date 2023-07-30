@@ -1,5 +1,9 @@
 <h1>材料リスト</h1>
 
+<%= link_to :back do %>
+  <button>戻る</button>
+<% end %>
+
 <div id="ingredient_form">
   <%= form_with(model: @ingredient, url:ingredients_path, remote: true) do |form| %>
     <div class="field">
@@ -8,7 +12,7 @@
     </div>
     <div class="field">
       <%= form.label :'㌘あたり原価' %>
-      <%= form.number_field :cost_per_gram, step: 0.01 %>
+      <%= form.number_field :cost_per_gram, step: 0.1 %>
       <span>円</span>
     </div>
     <%= form.submit '追加' %>

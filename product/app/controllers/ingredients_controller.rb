@@ -4,7 +4,8 @@ class IngredientsController < ApplicationController
 
   def index
     @ingredient = Ingredient.new
-    @ingredients = Ingredient.all
+    @user = current_user
+    @ingredients = @user.ingredients
   end
 
   def show

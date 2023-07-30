@@ -1,4 +1,7 @@
 class Ingredient < ApplicationRecord
+  has_many :recipe_ingredients, dependent: :destroy
+  #Ex:- :null => false
+  has_many :recipes, through: :recipe_ingredients
   belongs_to :user
   validates :name, presence: true
   validates :cost_per_gram, presence: true, numericality: { greater_than: 0 }
