@@ -26,9 +26,9 @@ class RecipesController < ApplicationController
 
   def show
     @recipe_ingredient = RecipeIngredient.new
+    @recipe_method = RecipeMethod.new
     @user = current_user
     @ingredients = @user.ingredients
-    # @recipe_ingredients = @recipe.recipe_ingredients.includes(:ingredient) # このレシピに関連する材料と分量だけを取得
     # @recipe_ingredients = @ingredients.left_joins(:recipe_ingredients)
     @recipe_ingredients = RecipeIngredient.where(recipe_id: @recipe.id).includes(:ingredient)
     # @recipe_ingredients = @recipe.joins(:recipe_ingredients)
@@ -38,16 +38,16 @@ class RecipesController < ApplicationController
 
   def edit
     @user = current_user
-     @ingredients = @user.ingredients
+    @ingredients = @user.ingredients
     @recipe_ingredients = RecipeIngredient.where(recipe_id: @recipe.id).includes(:ingredient)
     @recipe_methods = @recipe.recipe_methods
   end
 
   def update
     if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe)
+      redirect_to request.referer
     else
-      render :edit
+      redirect_to request.referer, alert: @recipe.errors.full_messages.join(', ')
     end
   end
 

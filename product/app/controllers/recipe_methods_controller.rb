@@ -1,4 +1,5 @@
 class RecipeMethodsController < ApplicationController
+  before_action :set_recipe_method, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   def new
@@ -17,13 +18,25 @@ class RecipeMethodsController < ApplicationController
     end
   end
 
+  def update
+    if @recipe_method.update(recipe_method_params)
+      redirect_to request.referer
+    else
+      redirect_to request.referer, alert: @recipe_method.errors.full_messages.join(', ')
+    end
+  end
+
   def destroy
-    @recipe_method = RecipeMethod.find(params[:id])
     @recipe_method.destroy
     redirect_to request.referer
   end
 
   private
+
+  def set_recipe_method
+    @recipe_method = RecipeMethod.find(params[:id])
+  end
+
 
   def recipe_method_params
     params.require(:recipe_method).permit(:process)
