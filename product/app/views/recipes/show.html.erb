@@ -1,3 +1,5 @@
+<% @sum = 0 %>
+
 <h2 class="mb-3">show</h2>
 
 <button class="btn btn-block mb-3">
@@ -42,6 +44,8 @@
         <br>
         <%= link_to '削除', recipe_recipe_ingredient_path(recipe_id: @recipe.id, id: recipe_ingredient.id), data: { turbo_method: :delete, turbo_confirm: "削除してよろしいですか？" }, class: 'btn btn-danger' %>
 
+          小計<% @sum += ingredient.cost_per_gram * recipe_ingredient.quantity_in_grams %>円
+
       <% else %>
         <%# <div>材料を登録する</div> %>
         <%= form_with model: RecipeIngredient.new, url:recipe_recipe_ingredients_path(recipe_id: @recipe.id), local: true, class: 'mb-3' do |f| %>
@@ -80,10 +84,10 @@
 <div class="row mt-5">
     <div class="col-md-12">
       <% @recipe_methods.each_with_index do |m, index| %>
-        <h3>作り方.<%= index + 1 %></h3>
+        <h3>作り方</h3>
         <div class="card mb-3">
           <div class="card-body">
-            <p><%= m.process %></p>
+            <p><%= index + 1 %>.<%= m.process %></p>
           </div>
     </div>
     <div class="actions mb-3">

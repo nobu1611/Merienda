@@ -86,18 +86,20 @@
         <%= link_to '削除', recipe_recipe_method_path(recipe_id: @recipe.id, id: recipe_method.id), data: { turbo_method: :delete, turbo_confirm: "削除してよろしいですか？" }, class: 'btn btn-danger' %>
 
       <% else %>
-        <%= form_with model: @recipe_methods, url: recipe_recipe_methods_path(recipe_id: @recipe.id), local: true do |f| %>
-        <div class="form-group">
-          <%= f.label :作り方, class: 'form-label' %>
-          <%= f.text_area :process, class: 'form-control', rows: '5', required: '' %>
-        </div>
-
-        <div class="actions mt-3">
-          <%= f.submit '手順登録', class: 'btn btn-success btn-lg btn-block' %>
-        </div>
-      <% end %>
-        <br>
       <% end %>
     </div>
+  </div>
+<% end %>
+<br>
+<br>
+<h4>作り方を登録する</h4>
+<%= form_with model: @recipe_method, url: recipe_recipe_methods_path(recipe_id: @recipe.id), local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :作り方, class: 'form-label' %>
+    <%= f.text_area :process, class: 'form-control', rows: '5', required: '' %>
+  </div>
+
+  <div class="actions mt-3">
+    <%= f.submit '手順登録', class: 'btn btn-success btn-lg btn-block' %>
   </div>
 <% end %>

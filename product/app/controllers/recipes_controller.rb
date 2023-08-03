@@ -41,6 +41,8 @@ class RecipesController < ApplicationController
     @ingredients = @user.ingredients
     @recipe_ingredients = RecipeIngredient.where(recipe_id: @recipe.id).includes(:ingredient)
     @recipe_methods = @recipe.recipe_methods
+    @recipe_method = RecipeMethod.new
+
   end
 
   def update
