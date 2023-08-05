@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
@@ -15,20 +15,9 @@
   <header>
     <h1>Merienda</h1>
   </header>
-  <%# データ保存成功時フラッシュメッセージ %>
-  <% if notice %>
-  <div class="notice"><%= notice %></div>
-  <% end %>
-  <%# 失敗時 %>
-  <% if alert %>
-  <div class="alert"><%= alert %></div>
-  <% end %>
-
-<div class="container">
- <div class="row">
-   <%= yield %>
- </div>
-</div>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= yield %>
 
   </body>
 </html>
