@@ -11,51 +11,6 @@
   </head>
 
   <body>
-<div id="mask" style="display: none; position: absolute;width: 100%;height: 100%;background-color: black;opacity: 80%;z-index: 1;cursor: pointer;">
-</div>
-
-<div id='ingredient_form' style="width: 400px; display: none; height: 400px;background-color: white;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;cursor: auto; z-index: 2;">
-
-<div id="blue">blue</div>
-<div id="red">red</div>
-<div id="yellow">yellow</div>
-<div id="selected_color"></div>
-
-
-<script>
-  var colors = ['blue', 'red', 'yellow'];
-  var selectedColor = document.getElementById('selected_color');
-  for (let i = 0; i < colors.length; i++) {
-    document.getElementById(colors[i]).addEventListener('click', function() {
-      console.log(colors[i]);
-      selectedColor.innerText = colors[i];
-    });
-  }
-</script>
-<div class="spinner-container">
-    <span id="spinner-sub">-</span>
-    <input id="spinner" value="0">
-    <span id="spinner-add">+</span>
-</div>
-
-<script>
-  var spinner = document.getElementById('spinner');
-  var spinnerSub = document.getElementById('spinner-sub');
-  var spinnerAdd = document.getElementById('spinner-add');
-
-  spinnerSub.addEventListener('click', function() {
-    spinner.value -= 1;
-  });
-  spinnerAdd.addEventListener('click', function() {
-    spinner.value += 1;
-  });
-</script>
-
-<button id="submit_ingredient">
-  追加
-</button>
-
-</div>
 
   <header>
     <h1>Merienda</h1>
@@ -75,20 +30,5 @@
  </div>
 </div>
 
-<script>
-  var addButton = document.getElementById('add_ingredients');
-  var ingredientForm = document.getElementById('ingredient_form');
-  var mask = document.getElementById("mask");
-
-  addButton.addEventListener('click', function() {
-    mask.style.display = 'block';
-    ingredientForm.style.display = 'block';
-  }, false);
-
-  mask.addEventListener('click', function() {
-    mask.style.display = 'none';
-    ingredientForm.style.display = 'none';
-  }, false);
-</script>
   </body>
 </html>
