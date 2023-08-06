@@ -1,0 +1,19 @@
+current directory: /var/www/Merienda/product/vendor/bundle/ruby/3.1.0/gems/io-console-0.6.0/ext/io/console
+/home/ec2-user/.rbenv/versions/3.1.4/bin/ruby -I /home/ec2-user/.rbenv/versions/3.1.4/lib/ruby/3.1.0 extconf.rb
+checking for termios.h... yes
+checking for cfmakeraw() in termios.h... yes
+checking for sys/ioctl.h... yes
+checking for HAVE_RUBY_FIBER_SCHEDULER_H... yes
+creating Makefile
+
+current directory: /var/www/Merienda/product/vendor/bundle/ruby/3.1.0/gems/io-console-0.6.0/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20230803-102594-drbrwd sitelibdir\=./.gem.20230803-102594-drbrwd clean
+
+current directory: /var/www/Merienda/product/vendor/bundle/ruby/3.1.0/gems/io-console-0.6.0/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20230803-102594-drbrwd sitelibdir\=./.gem.20230803-102594-drbrwd
+compiling console.c
+linking shared-object io/console.so
+
+current directory: /var/www/Merienda/product/vendor/bundle/ruby/3.1.0/gems/io-console-0.6.0/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20230803-102594-drbrwd sitelibdir\=./.gem.20230803-102594-drbrwd install
+/usr/bin/install -c -m 0755 console.so ./.gem.20230803-102594-drbrwd/io

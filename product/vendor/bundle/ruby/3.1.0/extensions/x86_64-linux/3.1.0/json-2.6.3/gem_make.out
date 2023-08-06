@@ -1,0 +1,13 @@
+current directory: /var/www/Merienda/product/vendor/bundle/ruby/3.1.0/gems/json-2.6.3/ext/json
+/home/ec2-user/.rbenv/versions/3.1.4/bin/ruby -I /home/ec2-user/.rbenv/versions/3.1.4/lib/ruby/3.1.0 extconf.rb
+creating Makefile
+
+current directory: /var/www/Merienda/product/vendor/bundle/ruby/3.1.0/gems/json-2.6.3/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20230803-102594-q0svx7 sitelibdir\=./.gem.20230803-102594-q0svx7 clean
+
+current directory: /var/www/Merienda/product/vendor/bundle/ruby/3.1.0/gems/json-2.6.3/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20230803-102594-q0svx7 sitelibdir\=./.gem.20230803-102594-q0svx7
+make: Nothing to be done for 'all'.
+
+current directory: /var/www/Merienda/product/vendor/bundle/ruby/3.1.0/gems/json-2.6.3/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20230803-102594-q0svx7 sitelibdir\=./.gem.20230803-102594-q0svx7 install

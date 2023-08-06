@@ -1,0 +1,17 @@
+current directory: /var/www/Merienda/product/vendor/bundle/ruby/3.1.0/gems/racc-1.7.1/ext/racc/cparse
+/home/ec2-user/.rbenv/versions/3.1.4/bin/ruby -I /home/ec2-user/.rbenv/versions/3.1.4/lib/ruby/3.1.0 extconf.rb
+checking for rb_block_call()... yes
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /var/www/Merienda/product/vendor/bundle/ruby/3.1.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20230803-102594-c49prw sitelibdir\=./.gem.20230803-102594-c49prw clean
+
+current directory: /var/www/Merienda/product/vendor/bundle/ruby/3.1.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20230803-102594-c49prw sitelibdir\=./.gem.20230803-102594-c49prw
+compiling cparse.c
+linking shared-object racc/cparse.so
+
+current directory: /var/www/Merienda/product/vendor/bundle/ruby/3.1.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20230803-102594-c49prw sitelibdir\=./.gem.20230803-102594-c49prw install
+/usr/bin/install -c -m 0755 cparse.so ./.gem.20230803-102594-c49prw/racc
