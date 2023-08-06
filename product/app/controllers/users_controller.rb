@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  # ログインしていない場合はログイン画面にリダイレクト
+  before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
+  
   # すべてのユーザーを取得
   def index
     @users = User.all
