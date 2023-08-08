@@ -16,7 +16,6 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     super
   end
 
-
   protected
 
   # 確認指示を再送した後に使用する path
