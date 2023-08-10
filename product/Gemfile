@@ -55,7 +55,7 @@ gem 'jquery-rails'
 
 gem 'htmlbeautifier'
 
-gem 'uglifier', '>= 1.3.0'
+
 
 
 # Use Sass to process CSS

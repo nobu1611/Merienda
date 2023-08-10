@@ -32,8 +32,10 @@ Rails.application.configure do
   config.assets.compile = false
 
   # 追記
-  config.assets.css_compressor = :sass   # or :yui
-  config.assets.js_compressor = Uglifier.new(harmony: true)
+  config.assets.css_compressor = :sass # or :yui
+  # config.assets.js_compressor = Uglifier.new(harmony: true)
+  config.assets.js_compressor = :terser
+
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
