@@ -8,16 +8,73 @@
 
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <!-- Bootstrap CSSの追加 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
 
   <body>
 
-  <header>
-    <h1>Merienda</h1>
-  </header>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <h1 class="">Merienda</h1>
+
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+
+              <div class="container">
+              <div class="row">
+                <div class="col-3">
+                  <li class="nav-item">
+                <%= link_to 'ログアウト', destroy_user_session_path, class: 'dropdown-item', data: { turbo_method: :delete, turbo_confirm: "ログアウトしてもよろしいですか？" } %>
+                  </li>
+                </div>
+
+                <div class="col-3">
+                  <li class="nav-item">
+                <%= link_to 'レシピ一覧', recipes_path, class: 'dropdown-item' %>
+                  </li>
+                </div>
+
+              <div class="col-3">
+                <li class="nav-item">
+                  <%= link_to '材料一覧', ingredients_path, class: 'dropdown-item' %>
+                </li>
+              </div>
+
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ユーザー登録', new_user_registration_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <% if notice %>
+      <div class="alert alert-success mt-3" role="alert">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <div class="alert alert-danger mt-3" role="alert">
+        <%= alert %>
+      </div>
+    <% end %>
+
+    <div class="container mt-4">
+      <%= yield %>
+    </div>
+
+    <!-- BootstrapのJavaScriptとPopper.jsの追加 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   </body>
 </html>

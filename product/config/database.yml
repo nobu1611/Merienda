@@ -9,13 +9,15 @@ development:
   reconnect: false
   database: mysql_development
   pool: 5
-  username: merienda
-  password: password
+  username: root
+  password: 1116
   host: localhost
 
 test:
   <<: *default
   database: Sample_test
+  username: root
+  password: 1116
 
 production:
   database: merienda_app_production
