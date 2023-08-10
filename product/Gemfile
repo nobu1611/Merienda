@@ -48,7 +48,7 @@ gem "bootsnap", require: false
 gem 'devise'
 
 #bootstrap
-gem 'bootstrap', '~> 5.0.2'
+gem 'bootstrap', '~> 5.1.3'
 
 #jquery
 gem 'jquery-rails'
