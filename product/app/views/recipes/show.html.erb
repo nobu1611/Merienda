@@ -61,11 +61,40 @@
               <%= f.submit '分量登録', class: 'btn btn-success btn-lg btn-block' %>
             </div>
           <% end %>
-          <%= @sum %>
         <% end %>
       </div>
     </div>
   <% end %>
+  
+  <%# 合計原価 %>
+  <div class="card mb-3">
+  <div class="card-header fw-bold">合計原価</div>
+  <div class="card-body">
+    <p class="card-text"><%= @sum %> 円</p>
+  </div>
+</div>
+
+<%# 原価等分 %>
+<div class="card mb-3">
+  <div class="card-header fw-bold">原価等分</div>
+  <div class="card-body">
+    <%= form_with url: '#', local: true, method: :get, html: { id: 'division-form' } do |f| %>
+      <div class="form-group">
+        <label for="division-number">等分する数:</label>
+        <%= f.number_field :division, min: 1, step: 1, id: 'division-number', class: 'form-control', placeholder: '等分する数を入力' %>
+      </div>
+      <div class="actions mt-3">
+        <%= f.submit '計算', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+    <div id="division-result">
+      <% if params[:division] %>
+        1人当たりの原価: <%= (@sum / params[:division].to_i).round(2) %> 円
+      <% end %>
+    </div>
+  </div>
+</div>
+
 
   <div class="row mt-5">
     <div class="col-md-12">
