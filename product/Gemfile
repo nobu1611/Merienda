@@ -56,6 +56,8 @@ gem 'jquery-rails'
 
 gem 'htmlbeautifier'
 
+gem 'uglifier'
+
 
 
 
