@@ -56,7 +56,6 @@ gem 'jquery-rails'
 
 gem 'htmlbeautifier'
 
-gem 'terser-ruby'
 
 
 
