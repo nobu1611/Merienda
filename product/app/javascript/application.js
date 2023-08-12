@@ -11,3 +11,4 @@ import "bootstrap"
 // import "stylesheets/application.scss"
 
 // import './custom/recipes';
+import * as bootstrap from "bootstrap"
