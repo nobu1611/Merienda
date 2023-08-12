@@ -58,6 +58,7 @@ gem 'htmlbeautifier'
 
 gem 'uglifier'
 
+gem 'popper_js'
 
 
 
