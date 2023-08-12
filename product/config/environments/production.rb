@@ -26,15 +26,13 @@ Rails.application.configure do
   config.public_file_server.enabled = true
 
   # Compress CSS using a preprocessor.
-  # config.assets.css_compressor = :sass
+  config.assets.css_compressor = :sass
+  config.assets.js_compressor = Uglifier
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
-  # 追記
-  config.assets.css_compressor = :sass # or :yui
-  # config.assets.js_compressor = Uglifier
-  config.assets.js_compressor = :terser
+
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
