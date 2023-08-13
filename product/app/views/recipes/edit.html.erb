@@ -1,105 +1,90 @@
-<!-- app/views/recipes/edit.html.erb -->
-<h1>レシピを編集</h1>
+<h2 class="text-center">レシピを編集</h2>
 
-<button class="btn btn-block mb-3">
-<%= link_to 'レシピ一覧', recipes_path, class: 'btn btn-primary mb-3' %>
-</button>
+<div class="container mt-4">
 
+  <%= form_with(model: @recipe, local: true) do |form| %>
+    <div class="form-group">
+      <%= form.label :タイトル, class: 'form-label' %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
 
-<%# レシピタイトル %>
-<%= form_with(model: @recipe, local: true) do |form| %>
-  <div class="form-group">
-    <%= form.label :タイトル %>
-    <%= form.text_field :title, class: 'form-control' %>
-  </div>
+    <div class="form-group mt-3">
+      <%= form.label :メモ, class: 'form-label' %>
+      <%= form.text_area :notes, class: 'form-control', rows: '3' %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :メモ %>
-    <%= form.text_area :notes, class: 'form-control', rows: '5' %>
-  </div>
-  <div> <%= form.submit '更新', class: 'btn btn-primary' %> </div>
+    <div class="mt-3">
+      <%= form.submit '更新', class: 'btn btn-primary' %>
+    </div>
   <% end %>
 
-<%# 材料 %>
+  <h3 class="mb-4 text-center">材料</h3>
+
+<div class="row">
   <% @ingredients.each do |ingredient| %>
-  <% recipe_ingredient = @recipe_ingredients.find { |ri| ri.ingredient_id == ingredient.id } %>
-  <div class="card mb-3">
-    <div class="card-header"><h3>材料</h3></div>
-    <div class="card-body">
-      <p><%= ingredient.name %></p>
-      <p><%= ingredient.cost_per_gram %> 円/g</p>
-      <% if recipe_ingredient %>
-        <h4>使用量</h4>
-        <p><%= recipe_ingredient.quantity_in_grams %> g</p>
-        <%# 分量編集 %>
-        <%= form_with model: recipe_ingredient, url: recipe_recipe_ingredient_path(recipe_id: @recipe.id, id: recipe_ingredient.id), local: true, method: :put, class: 'mb-3' do |f| %>
-          <%= f.hidden_field :ingredient_id, :value => ingredient.id %>
-          <div class="form-group">
-            <%= f.label :分量, class: 'form-label' %>
-            <%= f.number_field :quantity_in_grams, min: 1, step: 0.01, placeholder: '分量(必須)', class: 'form-control' %>g
+    <% recipe_ingredient = @recipe_ingredients.find { |ri| ri.ingredient_id == ingredient.id } %>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-light">
+          <h5 class="card-title mb-0"><%= ingredient.name %></h5>
+        </div>
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col-md-12">
+              <span class="fs-5 text-muted">㌘あたり<%= ingredient.cost_per_gram %> 円</span>
+            </div>
           </div>
-          <div class="actions mt-3">
-            <%= f.submit '分量変更', class: 'btn btn-success btn-lg btn-block' %>
-          </div>
-        <% end %>
-        <br>
-        <%= link_to '削除', recipe_recipe_ingredient_path(recipe_id: @recipe.id, id: recipe_ingredient.id), data: { turbo_method: :delete, turbo_confirm: "削除してよろしいですか？" }, class: 'btn btn-danger' %>
-
-      <% else %>
-        <%# <div>材料登録</div> %>
-        <%= form_with model: RecipeIngredient.new, url:recipe_recipe_ingredients_path(recipe_id: @recipe.id), local: true, class: 'mb-3' do |f| %>
-          <%= f.hidden_field :ingredient_id, :value => ingredient.id %>
-          <div class="form-group">
-            <%= f.label :分量, class: 'form-label' %>
-            <%= f.number_field :quantity_in_grams, min: 1, step: 0.1, placeholder: '分量を入力', class: 'form-control' %>g
-          </div>
-          <div class="actions mt-3">
-            <%= f.submit '材料登録', class: 'btn btn-success btn-lg btn-block' %>
-          </div>
-        <% end %>
-        <br>
-      <% end %>
+          <% if recipe_ingredient %>
+            <%= form_with model: recipe_ingredient, url: recipe_recipe_ingredient_path(recipe_id: @recipe.id, id: recipe_ingredient.id), local: true, method: :put do |f| %>
+              <%= f.hidden_field :ingredient_id, :value => ingredient.id %>
+              <div class="form-group mb-3">
+                <%= f.number_field :quantity_in_grams, min: 1, step: 0.01, placeholder: '分量(必須)', class: 'form-control' %>
+              </div>
+              <%= f.submit '分量変更', class: 'btn btn-success mb-2' %>
+            <% end %>
+            <%= link_to '削除', recipe_recipe_ingredient_path(recipe_id: @recipe.id, id: recipe_ingredient.id), data: { turbo_method: :delete, turbo_confirm: "削除してよろしいですか？" }, class: 'btn btn-danger mt-2' %>
+          <% else %>
+            <%= form_with model: RecipeIngredient.new, url: recipe_recipe_ingredients_path(recipe_id: @recipe.id), local: true do |f| %>
+              <%= f.hidden_field :ingredient_id, :value => ingredient.id %>
+              <div class="form-group mb-3">
+                <div>
+                  <%= f.number_field :quantity_in_grams, min: 1, step: 0.1, placeholder: '分量を入力', class: 'form-control' %>g
+                </div>
+              </div>
+              <%= f.submit '分量登録', class: 'btn btn-primary' %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
-<% end %>
-<br>
-<br>
+  <% end %>
+</div>
 
-<%# 作り方セクション %>
-<% @recipe_methods.each do |recipe_method| %>
-  <div class="card mb-3">
-    <div class="card-header"><h3>作り方</h3></div>
-    <div class="card-body">
-      <% if recipe_method %>
-        <h4>手順</h4>
-        <p><%= recipe_method.process %></p>
-        <%= form_with model: recipe_method, url: recipe_recipe_method_path(recipe_id: @recipe.id, id: recipe_method.id), local: true, method: :put, class: 'mb-3' do |f| %>
-          <div class="form-group">
-            <%= f.label :手順, class: 'form-label' %>
-            <%= f.text_area :process, class: 'form-control', rows: '5' %>
-          </div>
-          <div class="actions mt-3">
-            <%= f.submit '手順変更', class: 'btn btn-success btn-lg btn-block' %>
-          </div>
-        <% end %>
-        <br>
-        <%= link_to '削除', recipe_recipe_method_path(recipe_id: @recipe.id, id: recipe_method.id), data: { turbo_method: :delete, turbo_confirm: "削除してよろしいですか？" }, class: 'btn btn-danger' %>
 
-      <% else %>
-      <% end %>
+  <h3 class="mt-5 text-center">作り方</h3>
+  <%= form_with model: @recipe_method, url: recipe_recipe_methods_path(recipe_id: @recipe.id), local: true do |f| %>
+    <div class="form-group">
+      <%= f.text_area :process, class: 'form-control', rows: '3', required: '' %>
     </div>
-  </div>
-<% end %>
-<br>
-<br>
-<h4>作り方を登録する</h4>
-<%= form_with model: @recipe_method, url: recipe_recipe_methods_path(recipe_id: @recipe.id), local: true do |f| %>
-  <div class="form-group">
-    <%= f.label :作り方, class: 'form-label' %>
-    <%= f.text_area :process, class: 'form-control', rows: '5', required: '' %>
-  </div>
+    <%= f.submit '作り方を追加', class: 'btn btn-primary btn-block mb-5' %>
+  <% end %>
+</div>
 
-  <div class="actions mt-3">
-    <%= f.submit '手順登録', class: 'btn btn-success btn-lg btn-block' %>
-  </div>
-<% end %>
+  <% @recipe_methods.each_with_index do |recipe_method, index| %>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">作り方</div>
+      <div class="card-body">
+        <% if recipe_method %>
+          <p><%= index + 1 %>.<%= recipe_method.process %></p>
+
+          <%= form_with model: recipe_method, url: recipe_recipe_method_path(recipe_id: @recipe.id, id: recipe_method.id), local: true, method: :put do |f| %>
+            <div class="form-group">
+              <%= f.text_area :process, class: 'form-control', rows: '3', required: '' %>
+            </div>
+            <%= f.submit '手順変更', class: 'btn btn-success mb-3' %>
+          <% end %>
+          <%= link_to '削除', recipe_recipe_method_path(recipe_id: @recipe.id, id: recipe_method.id), data: { turbo_method: :delete, turbo_confirm: "削除してよろしいですか？" }, class: 'btn btn-danger' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>

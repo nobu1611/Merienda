@@ -54,9 +54,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_153120) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", null: false
-    t.index ["name"], name: "index_users_on_name", unique: true
+    t.string "username", null: false
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "ingredients", "users"

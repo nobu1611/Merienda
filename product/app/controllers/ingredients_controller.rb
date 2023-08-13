@@ -22,15 +22,9 @@ class IngredientsController < ApplicationController
 
     # respond_to do |format|
       if @ingredient.save
-        redirect_to ingredients_path
-        # format.html { redirect_to @ingredient, notice: 'Ingredient was successfully created.' }
-        # format.js   # this will render 'create.js.erb'
-        # format.json { render :show, status: :created, location: @ingredient }
+        redirect_to ingredients_path, notice: '材料が追加されました'
       else
-        # Rails.logger.error @ingredient.errors.full_messages.join(', ')
-        redirect_to ingredients_path, alert: @ingredient.errors.full_messages.join(', ')
-        # format.html { render :new }
-        # format.json { render json: @ingredient.errors, status: :unprocessable_entity }
+        redirect_to ingredients_path, alert: '材料が追加されていません'
       end
     # end
   end
