@@ -21,7 +21,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /users/edit
   def edit
     super
-
+    
     puts '========================='
     puts 'GET /resource/edit'
     puts '========================='

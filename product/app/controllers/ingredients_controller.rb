@@ -8,28 +8,19 @@ class IngredientsController < ApplicationController
     @ingredients = @user.ingredients
   end
 
-  def show
-  end
-
   def new
     @ingredient = Ingredient.new
   end
 
   def create
     @ingredient = Ingredient.new(ingredient_params)
-    # @ingredient.user_id = 1
     @ingredient.user = current_user
 
-    # respond_to do |format|
       if @ingredient.save
         redirect_to ingredients_path, notice: '材料が追加されました'
       else
         redirect_to ingredients_path, alert: '材料が追加されていません'
       end
-    # end
-  end
-
-  def edit
   end
 
   def update
