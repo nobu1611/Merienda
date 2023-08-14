@@ -32,7 +32,7 @@ entity RecipeMethod as "RecipeMethod\nレシピ手順" {
   + id [PK]
   --
   recipe_id <<FK>>
-  method [手順]
+  process [手順]
   created_at [作成日]
   updated_at [更新日]
 }

@@ -13,7 +13,7 @@ Users テーブル（ユーザー）
 |カラム名	| データ型	| NULL	| キー	| 初期値	| AUTO INCREMENT|
 |---|---|---|---|---|---|
 |id	|INT	|NOT NULL	|PRIMARY KEY	|	|YES|
-|username	|VARCHAR(255)	|NOT NULL	|UNIQUE	|	||
+|name	|VARCHAR(255)	|NOT NULL	|UNIQUE	|	||
 |password	|VARCHAR(255)	|NOT NULL	|	|	||
 |created_at	|DATETIME	|NOT NULL	|	|	||
 |updated_at	|DATETIME	|NOT NULL	|	|	||
@@ -45,7 +45,7 @@ RecipeMethod テーブル（レシピの作り方）
 |---|---|---|---|---|---|
 |id	|INT	|NOT NULL	|PRIMARY KEY	|	|YES|
 |recipe_id	|INT	|NOT NULL	|FOREIGN KEY	|	||
-|method	|TEXT	|	|	|	||
+|process	|TEXT	|	|	|	||
 |created_at	|DATETIME	|NOT NULL	|	|	||
 |updated_at	|DATETIME	|NOT NULL	|	|	||
 - 外部キー制約：recipe_id は Recipes テーブルの id に紐づく
