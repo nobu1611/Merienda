@@ -1,7 +1,7 @@
 # Merienda (メリエンダ)
- お菓子屋さんのためのお菓子作りサポートアプリ
+お菓子屋さんのためのお菓子作りサポートアプリ
 
-##　ターゲット
+## ターゲット
 - お菓子を作って販売している友人
 - プロフィール
   - 20代、女性
@@ -11,14 +11,13 @@
 - お菓子の試作をする際に、毎回材料の分量を変えて作るため、試作レシピが大量になり管理が大変（現在手書き）
 - 分量が変わるたびに原価計算をするのが大変
 - 既存アプリは飲食店向けで、小売販売のお菓子屋には不必要な機能が多い（栄養表示など）
-- 試作中は手を動かしているので、分量のメモを後回しにしていまい、分量を忘れてしまうことがある
 
 ## なぜそれを解決したいのか？
-- 材料やレシピの管理が大変と言っていたから
-- 分量を変えて作った際に、毎回原価計算をするのが大変と言っていたから
+- 材料やレシピの管理が煩雑だと困っていたから
+- 分量を変えて作った際に、毎回原価計算をするのが面倒だと困っていたから
 - シンプルで使いやすい既存アプリが無いと困っていたから
 
-## どうやって解決するのか？
+## 解決方法
 - お菓子作りに特化して機能を絞ったシンプルな管理アプリを作る
 
 ## 機能要件
@@ -52,7 +51,7 @@ Users テーブル（ユーザー）
 |カラム名	| データ型	| NULL	| キー	| 初期値	| AUTO INCREMENT|
 |---|---|---|---|---|---|
 |id	|INT	|NOT NULL	|PRIMARY KEY	|	|YES|
-|name	|VARCHAR(255)	|NOT NULL	|UNIQUE	|	||
+|username	|VARCHAR(255)	|NOT NULL	|UNIQUE	|	||
 |password	|VARCHAR(255)	|NOT NULL	|	|	||
 |created_at	|DATETIME	|NOT NULL	|	|	||
 |updated_at	|DATETIME	|NOT NULL	|	|	||
@@ -105,10 +104,10 @@ RecipeIngredients テーブル（レシピごとの材料とその量）
 <details>
   <summary>ER図</summary>
 
-![Alt text](./img/ER.png)
+![Alt text](./documents/img/ER.png)
 </details>
 
 <details>
   <summary>システム構成図</summary>
-<img src="./img/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E6%88%90%E5%9B%B3.png" width="500px">
+<img src="./documents/img/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E6%88%90%E5%9B%B3.png" width="500px">
 </details>
