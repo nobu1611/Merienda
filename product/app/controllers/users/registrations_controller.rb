@@ -7,7 +7,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /users/sign_up
   def new
     super
-
     puts '========================='
     puts 'GET /resource/sign_up'
     puts '========================='
@@ -21,7 +20,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /users/edit
   def edit
     super
-    
+
     puts '========================='
     puts 'GET /resource/edit'
     puts '========================='

@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.all
     @user = current_user
     @recipes = @user.recipes
+    @ingredients = @user.ingredients
   end
 
   def new

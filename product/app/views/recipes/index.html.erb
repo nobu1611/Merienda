@@ -1,4 +1,11 @@
 <!-- app/views/recipes/index.html.erb -->
+
+<% if @ingredients.blank? %>
+<div class="alert alert-info p-4">
+    <p>レシピを書くときは<%= link_to '材料一覧', ingredients_path %>で材料と㌘あたり原価を入力してね！</p>
+</div>
+<% end %>
+
 <div class="container mt-4 border p-4">
     <h1 class="mb-4">レシピ一覧</h1>
 
