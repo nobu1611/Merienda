@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /users
   def create
-    super
+    # super
   end
 
   # GET /users/edit
@@ -28,12 +28,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /users
   def update
-    super
+    # super
   end
 
   # DELETE /users
   def destroy
-    super
+    # super
   end
 
   # GET /users/cancel
@@ -42,7 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # これは、ユーザーがすべての OAuth セッションデータを削除して、
   # 途中で oauth サインイン/アップをキャンセルしたい場合に便利です。
   def cancel
-    super
+    # super
   end
 
   protected

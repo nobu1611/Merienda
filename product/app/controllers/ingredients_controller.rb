@@ -16,38 +16,33 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.new(ingredient_params)
     @ingredient.user = current_user
 
-      if @ingredient.save
-        redirect_to ingredients_path, notice: '材料が追加されました'
-      else
-        redirect_to ingredients_path, alert: '材料が追加されていません'
-      end
+    if @ingredient.save
+      redirect_to ingredients_path, notice: '材料が追加されました'
+    else
+      redirect_to ingredients_path, alert: '材料が追加されていません'
+    end
   end
 
   def update
-    if @ingredient.update(ingredient_params)
-      # render :show, status: :ok, location: @ingredient
-    else
-      # render :edit
-    end
+    # if @ingredient.update(ingredient_params)
+    #   # render :show, status: :ok, location: @ingredient
+    # else
+    #   # render :edit
+    # end
   end
 
   def destroy
     @ingredient.destroy
     redirect_to ingredients_path
-    # respond_to do |format|
-    #   format.html { redirect_to ingredients_url, notice: 'Ingredient was successfully destroyed.' }
-    #   format.js   # this will render 'destroy.js.erb'
-    #   format.json { head :no_content }
-    # end
   end
 
   private
 
-    def set_ingredient
-      @ingredient = Ingredient.find(params[:id])
-    end
+  def set_ingredient
+    @ingredient = Ingredient.find(params[:id])
+  end
 
-    def ingredient_params
-      params.require(:ingredient).permit(:name, :cost_per_gram)
-    end
+  def ingredient_params
+    params.require(:ingredient).permit(:name, :cost_per_gram)
+  end
 end

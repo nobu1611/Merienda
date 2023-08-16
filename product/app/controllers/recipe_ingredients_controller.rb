@@ -19,7 +19,6 @@ class RecipeIngredientsController < ApplicationController
   end
 
   def update
-    # @recipe_ingredient = RecipeIngredient.find(params[:id])
     if @recipe_ingredient.update(recipe_ingredient_params)
       redirect_to request.referer
     else
@@ -28,7 +27,6 @@ class RecipeIngredientsController < ApplicationController
   end
 
   def destroy
-    # @recipe_ingredient = RecipeIngredient.find(params[:id])
     if @recipe_ingredient.destroy
       redirect_to request.referer
     else

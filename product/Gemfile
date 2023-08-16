@@ -56,7 +56,9 @@ gem 'jquery-rails'
 
 gem 'htmlbeautifier'
 
-gem 'uglifier'
+# gem 'uglifier'
+
+gem 'terser'
 
 gem 'popper_js'
 
