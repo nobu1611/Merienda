@@ -34,7 +34,6 @@
 - Ruby 3.1.4
 - Rails 7.0.6
 - MySQL 8.0.33
-- Bootstrap 5.1.3
 
 ## 設計
 
