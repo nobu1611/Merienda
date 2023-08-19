@@ -29,8 +29,8 @@
                     <tr>
                         <td><%= index + 1 %>. <%= link_to recipe.title, recipe %></td>
                         <td>
-                            <%= link_to '編集', edit_recipe_path(recipe), class: "btn btn-outline-secondary btn-sm mr-2" %>
-                            <%= button_to '削除', recipe, class: "btn btn-outline-danger btn-sm", data: { turbo_method: :delete, turbo_confirm: "削除してよろしいですか？" } %>
+                            <%= link_to '編集', edit_recipe_path(recipe.id), class: "btn btn-outline-secondary btn-sm mr-2" %>
+                            <%= button_to "削除", recipe_path(recipe.id), method: :delete, class: "btn btn-outline-danger btn-sm" %>
                         </td>
                     </tr>
                 <% end %>
