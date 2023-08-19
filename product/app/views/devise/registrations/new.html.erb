@@ -3,7 +3,7 @@
     <div class="col-md-6">
       <h2 class="text-center mb-4">新規登録する</h2>
 
-      <%= form_with model: @user, url: user_registration_path, class: 'bg-light p-4 rounded shadow' do |f| %>
+      <%= form_with model: User.new, url: user_registration_path, class: 'bg-light p-4 rounded shadow' do |f| %>
 
         <div class="form-group">
           <%= f.label :ユーザー名, class: 'form-label' %>

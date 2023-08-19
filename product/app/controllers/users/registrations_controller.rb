@@ -14,7 +14,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /users
   def create
-    # super
+    puts '========================='
+    puts 'Post /resource/create'
+    puts '========================='
+    super
   end
 
   # GET /users/edit
