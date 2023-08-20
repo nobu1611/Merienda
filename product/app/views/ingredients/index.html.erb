@@ -30,9 +30,7 @@
         <% @ingredients.each do |ingredient| %>
           <li class="list-group-item d-flex justify-content-between align-items-center">
             <span><strong><%= ingredient.name %></strong> : <%= ingredient.cost_per_gram %>円</span>
-            <%= link_to ingredient_path(ingredient.id), data: { turbo_method: :delete, turbo_confirm: "削除してよろしいですか？" }, remote: true, class: 'btn btn-danger btn-sm' do %>
-              削除
-            <% end %>
+            <%= button_to "削除", ingredient_path(ingredient.id), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } } %>
           </li>
         <% end %>
       </ul>

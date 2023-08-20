@@ -42,7 +42,7 @@
               </div>
               <%= f.submit '分量変更', class: 'btn btn-success mb-2' %>
             <% end %>
-            <%= link_to '削除', recipe_recipe_ingredient_path(recipe_id: @recipe.id, id: recipe_ingredient.id), data: { turbo_method: :delete, turbo_confirm: "削除してよろしいですか？" }, class: 'btn btn-danger mt-2' %>
+            <%= button_to "削除", recipe_recipe_ingredient_path(recipe_id: @recipe.id, id: recipe_ingredient.id), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } } %>
           <% else %>
             <%= form_with model: RecipeIngredient.new, url: recipe_recipe_ingredients_path(recipe_id: @recipe.id), local: true do |f| %>
               <%= f.hidden_field :ingredient_id, :value => ingredient.id %>
@@ -83,7 +83,7 @@
             </div>
             <%= f.submit '手順変更', class: 'btn btn-success mb-3' %>
           <% end %>
-          <%= link_to '削除', recipe_recipe_method_path(recipe_id: @recipe.id, id: recipe_method.id), data: { turbo_method: :delete, turbo_confirm: "削除してよろしいですか？" }, class: 'btn btn-danger' %>
+          <%= button_to "削除", recipe_recipe_method_path(recipe_id: @recipe.id, id: recipe_method.id), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } } %>
         <% end %>
       </div>
     </div>
