@@ -6,15 +6,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <!-- Bootstrap CSSの追加 -->
-    <%# <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
-    <%# <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> %>
-    <%# <%= javascript_importmap_tags %>
 
     <%= javascript_importmap_tags %>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <meta name="turbolinks-visit-control" content="reload">
+    <%= stylesheet_link_tag "application" %>
+    <%# <meta name="turbolinks-visit-control" content="reload"> %>
 
 </head>
 
@@ -75,7 +71,8 @@
     <!-- BootstrapのJavaScriptとPopper.jsの追加 -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <%# <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
