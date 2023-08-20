@@ -30,7 +30,7 @@
         <% @ingredients.each do |ingredient| %>
           <li class="list-group-item d-flex justify-content-between align-items-center">
             <span><strong><%= ingredient.name %></strong> : <%= ingredient.cost_per_gram %>円</span>
-            <%= button_to "削除", ingredient_path(ingredient.id), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } } %>
+            <%= button_to "削除", ingredient_path(ingredient.id), method: :delete, data: { turbo: false }, form: { onSubmit: "return check()" } %>
           </li>
         <% end %>
       </ul>
@@ -45,3 +45,14 @@
     <%= link_to '戻る', request.referer || root_path, class: 'btn btn-outline-secondary' %>
   </div>
 </div>
+
+<script>
+  function check(){
+  if(window.confirm('本当に削除しますか？')){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+</script>
