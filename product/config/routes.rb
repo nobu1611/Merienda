@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions',
     passwords: 'users/passwords'
-                                }
+  }
 
   root to: 'recipes#index'
   # get 'recipes/index'

@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h1 class="mb-4">新しいレシピを作成</h1>
 
-  <%= form_with model: @recipe, url: recipes_path, local: true, html: { class: 'needs-validation', novalidate: '' } do |form| %>
+  <%= form_with model: @recipe, url: recipes_path do |form| %>
     <div class="form-group">
       <%= form.label :title, 'レシピ名', class: 'form-label' %>
       <%= form.text_field :title, class: 'form-control', required: '' %>

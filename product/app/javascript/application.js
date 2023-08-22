@@ -10,7 +10,7 @@ import "@popperjs/core"
 // import "bootstrap-icons/font/bootstrap-icons.css"
 // import "stylesheets/application.scss"
 
-// import './custom/recipes';
 import * as bootstrap from "bootstrap"
 import "popper"
 import "bootstrap"
+// import "./custom/script.js"

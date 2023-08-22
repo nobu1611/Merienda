@@ -20,9 +20,10 @@ class RecipesController < ApplicationController
     @recipe.user_id = current_user.id
 
     if @recipe.save
-      redirect_to recipe_path(@recipe.id)
+      flash[:notice] = "新しいレシピを作成しました"
+      redirect_to edit_recipe_path(@recipe.id)
     else
-      render :new, status: :unprocessable_entity
+      render :new, flash[:alert] = "レシピを入力してください"
     end
   end
 
@@ -44,11 +45,9 @@ class RecipesController < ApplicationController
   end
 
   def update
-    if @recipe.update(recipe_params)
-      redirect_to request.referer
-    else
-      redirect_to request.referer, alert: @recipe.errors.full_messages.join(', ')
-    end
+    @recipe.update(recipe_params)
+    redirect_to request.referer
+    flash[:notice] = "更新しました"
   end
 
   def destroy
@@ -66,6 +65,7 @@ class RecipesController < ApplicationController
   #   params.require(:recipe).permit(:title, :notes)
   # end
 
+  # 許可するパラメーターを設定
   def recipe_params
     params.require(:recipe).permit(:title, :notes, recipe_ingredients_attributes: [:id, :ingredient_id, :quantity_in_grams], recipe_methods_attributes: [:id, :process])
   end

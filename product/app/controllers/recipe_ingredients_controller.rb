@@ -12,26 +12,29 @@ class RecipeIngredientsController < ApplicationController
     @recipe_ingredient.recipe_id = @recipe.id
 
     if @recipe_ingredient.save
-      redirect_to request.referer
+      flash[:notice] = "分量を追加しました"
     else
-      redirect_to recipe_recipe_ingredient_path, alert: @ingredient.errors.full_messages.join(', ')
+      flash[:alert] = "分量を入力してください"
     end
+    redirect_to request.referer
   end
 
   def update
     if @recipe_ingredient.update(recipe_ingredient_params)
-      redirect_to request.referer
+      flash[:notice] = "分量を変更しました"
     else
-      redirect_to request.referer, alert: @recipe_ingredient.errors.full_messages.join(', ')
+      flash[:alert] = "分量を入力してください"
     end
+    redirect_to request.referer
   end
 
   def destroy
     if @recipe_ingredient.destroy
-      redirect_to request.referer
+      flash[:notice] = "分量を削除しました"
     else
-      redirect_to request.referer, alert: @recipe_ingredient.errors.full_messages.join(', ')
+      flash[:alert] = "分量を削除できませんでした"
     end
+    redirect_to request.referer
   end
 
   private
