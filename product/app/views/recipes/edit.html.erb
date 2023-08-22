@@ -83,8 +83,19 @@
             </div>
             <%= f.submit '手順変更', class: 'btn btn-success mb-3' %>
           <% end %>
-          <%= button_to "削除", recipe_recipe_method_path(recipe_id: @recipe.id, id: recipe_method.id), { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } } %>
+          <%= button_to "削除", recipe_recipe_method_path(recipe_id: @recipe.id, id: recipe_method.id), method: :delete, data: { turbo: false }, form: { onSubmit: "return check()" } %>
         <% end %>
       </div>
     </div>
   <% end %>
+
+<script>
+  function check(){
+  if(window.confirm('本当に削除しますか？')){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+</script>
