@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <h1 class="mb-4">新しいレシピを作成</h1>
+  <h1 class="mb-4">新しいレシピを追加</h1>
 
   <%= form_with model: @recipe, url: recipes_path do |form| %>
     <div class="form-group">
@@ -9,7 +9,7 @@
 
     <div class="form-group">
       <%= form.label :notes, 'メモ', class: 'form-label' %>
-      <%= form.text_area :notes, class: 'form-control', rows: '5', required: '' %>
+      <%= form.text_area :notes, class: 'form-control', rows: '5' %>
     </div>
 
     <div class="actions mt-3">

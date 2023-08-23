@@ -1,2 +1,8 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+.edit-button {
+  border: solid 3px #000000;
+  padding: 10px;
+  margin: 10px;background-color: yellow;
+}

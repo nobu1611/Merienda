@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm mb-5">
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm mb-5 primary">
 
         <a class="navbar-brand" href="#">Merienda</a>
 
@@ -28,13 +28,13 @@
                     <%= button_to "ログアウト", destroy_user_session_path, class: 'nav-link', method: :delete %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'レシピ投稿', new_recipe_path, class: 'nav-link' %>
+                    <%= link_to 'レシピを登録する', new_recipe_path, class: 'nav-link' %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'レシピ一覧', recipes_path, class: 'nav-link' %>
+                    <%= link_to 'レシピをみる', recipes_path, class: 'nav-link' %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to '材料一覧', ingredients_path, class: 'nav-link' %>
+                    <%= link_to '材料リスト', ingredients_path, class: 'nav-link' %>
                 </li>
                 <% else %>
                 <li class="nav-item">
@@ -65,6 +65,12 @@
 
         <%= yield %>
     </div>
+
+<style>
+    body {
+        background-color: #FFF4E1;
+    }
+</style>
 
     <!-- BootstrapのJavaScriptとPopper.jsの追加 -->
     <%# <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> %>
