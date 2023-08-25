@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'elb/health_check'
   get '/healthcheck', to: proc { [200, {}, ['']] } # healthcheck
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
+  get '/health_check' => 'elb#health_check'
   root to: 'recipes#index'
   # get 'recipes/index'
   # get 'users/index'

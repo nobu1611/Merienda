@@ -38,11 +38,11 @@
             <%= form_with model: recipe_ingredient, url: recipe_recipe_ingredient_path(recipe_id: @recipe.id, id: recipe_ingredient.id), local: true, method: :put do |f| %>
               <%= f.hidden_field :ingredient_id, :value => ingredient.id %>
               <div class="form-group mb-3">
-                <%= f.number_field :quantity_in_grams, min: 1, step: 0.01, placeholder: '分量(必須)', class: 'form-control' %>
+                <%= f.number_field :quantity_in_grams, min: 1, step: 0.01, placeholder: '分量(必須)', class: 'form-control' %>g
               </div>
               <%= f.submit '分量変更', class: 'btn btn-success mb-2' %>
             <% end %>
-            <%= button_to "削除", recipe_recipe_ingredient_path(recipe_id: @recipe.id, id: recipe_ingredient.id), method: :delete, data: { turbo: false }, form: { onSubmit: "return check()" } %>
+            <%= button_to "削除", recipe_recipe_ingredient_path(recipe_id: @recipe.id, id: recipe_ingredient.id), method: :delete, data: { turbo: false }, form: { onSubmit: "return check()" }, class: 'delete-btn'%>
           <% else %>
             <%= form_with model: RecipeIngredient.new, url: recipe_recipe_ingredients_path(recipe_id: @recipe.id), local: true do |f| %>
               <%= f.hidden_field :ingredient_id, value: ingredient.id %>
@@ -75,15 +75,15 @@
       <div class="card-header">作り方</div>
       <div class="card-body">
         <% if recipe_method %>
-          <p><%= index + 1 %>.<%= recipe_method.process %></p>
+
 
           <%= form_with model: recipe_method, url: recipe_recipe_method_path(recipe_id: @recipe.id, id: recipe_method.id), local: true, method: :put do |f| %>
             <div class="form-group">
-              <%= f.text_area :process, class: 'form-control', rows: '3', required: '' %>
+              <%= index + 1 %>.<%= f.text_area :process, class: 'form-control', rows: '3', required: '' %>
             </div>
             <%= f.submit '手順変更', class: 'btn btn-success mb-3' %>
           <% end %>
-          <%= button_to "削除", recipe_recipe_method_path(recipe_id: @recipe.id, id: recipe_method.id), method: :delete, data: { turbo: false }, form: { onSubmit: "return check()" } %>
+          <%= button_to "削除", recipe_recipe_method_path(recipe_id: @recipe.id, id: recipe_method.id), method: :delete, data: { turbo: false }, form: { onSubmit: "return check()" }, class:  %>
         <% end %>
       </div>
     </div>
@@ -99,3 +99,13 @@
   }
 }
 </script>
+<style>
+.delete-btn {
+    border: solid 3px #000000;
+    padding: 6px;
+    margin: 10px;
+    background-color: red;
+    border-radius: 20px;
+    text-decoration: none;
+}
+</style>
