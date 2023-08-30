@@ -23,14 +23,6 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def update
-    # if @ingredient.update(ingredient_params)
-    #   # render :show, status: :ok, location: @ingredient
-    # else
-    #   # render :edit
-    # end
-  end
-
   def destroy
     @ingredient.destroy
     redirect_to ingredients_path

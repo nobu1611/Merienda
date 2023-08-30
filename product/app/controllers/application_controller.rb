@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username]) # 新規登録時にusernameを許可
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username]) # ユーザー情報編集時にusernameを許可
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   end
 end

@@ -61,11 +61,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
-  # def recipe_params
-  #   params.require(:recipe).permit(:title, :notes)
-  # end
-
-  # 許可するパラメーターを設定
   def recipe_params
     params.require(:recipe).permit(:title, :notes, recipe_ingredients_attributes: [:id, :ingredient_id, :quantity_in_grams], recipe_methods_attributes: [:id, :process])
   end

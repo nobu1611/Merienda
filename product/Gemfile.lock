@@ -110,6 +110,10 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    haml (6.1.2)
+      temple (>= 0.8.2)
+      thor
+      tilt
     htmlbeautifier (1.4.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
@@ -161,6 +165,7 @@ GEM
       ast (~> 2.4.1)
       racc
     popper_js (2.11.7)
+    prettier_print (1.2.1)
     public_suffix (5.0.3)
     puma (5.6.6)
       nio4r (~> 2.0)
@@ -198,6 +203,7 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    rbs (3.2.1)
     regexp_parser (2.8.1)
     reline (0.3.6)
       io-console (~> 0.5)
@@ -248,6 +254,17 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    syntax_tree (6.1.1)
+      prettier_print (>= 1.2.0)
+    syntax_tree-haml (4.0.3)
+      haml (>= 5.2)
+      prettier_print (>= 1.2.1)
+      syntax_tree (>= 6.0.0)
+    syntax_tree-rbs (1.0.0)
+      prettier_print
+      rbs
+      syntax_tree (>= 2.0.1)
+    temple (0.10.2)
     terser (1.1.17)
       execjs (>= 0.3.0, < 3)
     thor (1.2.2)
@@ -296,6 +313,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   popper_js
+  prettier_print
   puma (~> 5.0)
   rails (~> 7.0.6)
   rubocop
@@ -305,6 +323,9 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
+  syntax_tree
+  syntax_tree-haml
+  syntax_tree-rbs
   terser
   turbo-rails
   tzinfo-data

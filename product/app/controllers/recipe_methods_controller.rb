@@ -37,7 +37,6 @@ class RecipeMethodsController < ApplicationController
     @recipe_method = RecipeMethod.find(params[:id])
   end
 
-
   def recipe_method_params
     params.require(:recipe_method).permit(:process)
   end

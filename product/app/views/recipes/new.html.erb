@@ -1,16 +1,21 @@
 <div class="container mt-5">
-  <h1 class="mb-4">新しいレシピを追加</h1>
+<h1 class="mb-4">新しいレシピを追加</h1>
 
+<div class="row">
+<div class="col-sm-3">
   <%= form_with model: @recipe, url: recipes_path do |form| %>
     <div class="form-group">
       <%= form.label :title, 'レシピ名', class: 'form-label' %>
       <%= form.text_field :title, class: 'form-control', required: '' %>
     </div>
+</div>
 
+<div class="col-sm-9">
     <div class="form-group">
       <%= form.label :notes, 'メモ', class: 'form-label' %>
       <%= form.text_area :notes, class: 'form-control', rows: '5' %>
     </div>
+</div>
 
     <div class="actions mt-3">
       <%= form.submit 'レシピを作成', class: 'btn btn-success btn-lg btn-block' %>
@@ -54,14 +59,13 @@
   padding: 0.25em 0.5em;
   text-decoration: none;
   color: #FFF;
-  border-radius: 4px;/*角の丸み*/
+  border-radius: 4px;
   box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
   font-weight: bold;
   border: solid 2px #000000;
 }
 
 .btn-square-so-pop:active {
-  /*押したとき*/
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 </style>

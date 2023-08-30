@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   }
 
   get '/health_check' => 'elb#health_check'
+
   root to: 'recipes#index'
   # get 'recipes/index'
   # get 'users/index'
